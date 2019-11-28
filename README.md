@@ -108,6 +108,14 @@ for tr in tbody.find_all('tr'):
 
 ### Final Result
 
-The table will, after executing the program, will be displayed as shown below.
+The table, after executing the program, will be displayed as shown below.
 
 <img src = "Database_Image.png" height = "400">
+
+## Future Developments
+
+Some of the updates I intend to add to this program are:
+
+* Visualizing the data using pie charts and bar graphs
+* Ability to sort the movies according to their language or country of origin
+* Comparison of scores with other review sites (e.g. Metacritic, Rotten Tomatoes, etc)

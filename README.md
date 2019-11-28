@@ -5,6 +5,7 @@ This program scrapes the top 250 movies on IMDb and arranges them in an SQL data
 ## Contents
 * [Installation](#installation)
 * [How It Works](#how-it-works)
+* [Future Developments](#future-developments)
 
 ## Installation
 

@@ -110,4 +110,4 @@ for tr in tbody.find_all('tr'):
 
 The table will, after executing the program, will be displayed as shown below.
 
-<img src = "Database_Image.png height = "400">
+<img src = "Database_Image.png" height = "400">

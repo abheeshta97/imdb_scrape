@@ -74,7 +74,14 @@ soup = BeautifulSoup(resp.text, features= 'lxml')
 ```
 The URL for containing the top 250 movies has been saved as a string. ```request.get``` is used to request data from the server. ```resp``` acts as a file handle, and is passed into the ```BeautifulSoup``` constructor. ```soup``` contains the source code of the website.
 
+<img src = "IMDb_Inspect.png" height = "400">
+
+Highlight one of the movie titles, right-click on it and select 'Inspect'.
+
+
+
 ```python
 tbody = soup.find('tbody', class_='lister-list')
 ```
+
 

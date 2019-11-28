@@ -48,3 +48,33 @@ import sqlite3
 ### Database
 
 The SQL table contains 4 attributes (columns):
+
+![Table Schema](./Table_Schema.png)
+
+The database and table (MovieList) have been created in the Python code:
+
+```python
+conn = sqlite3.connect('imdbList.db')
+cur = conn.cursor()
+cur.execute('DROP TABLE IF EXISTS MovieList')
+
+cur.execute('''
+CREATE TABLE MovieList (ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                        MovieName VARCHAR(200),
+                        Year YEAR,
+                        Rating DEC(2,1))''')
+```
+
+### Scraping
+
+```python
+url = "https://www.imdb.com/chart/top"
+resp = requests.get(url)
+soup = BeautifulSoup(resp.text, features= 'lxml')
+```
+The URL for containing the top 250 movies has been saved as a string. ```request.get``` is used to request data from the server. ```resp``` acts as a file handle, and is passed into the ```BeautifulSoup``` constructor. ```soup``` contains the source code of the website.
+
+```python
+tbody = soup.find('tbody', class_='lister-list')
+```
+

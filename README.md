@@ -78,10 +78,36 @@ The URL for containing the top 250 movies has been saved as a string. ```request
 
 Highlight one of the movie titles, right-click on it and select 'Inspect'.
 
+<img src = "IMDb_HTML_code.png" height = "400">
 
+As seen in the image above, the title of the movie, year of release and rating is located in ```<tbody class = 'lister-list'>```. All the 250 movies are stored within the aforementioned tag. Hence, as shown below, the variable ```tbody``` stores all the code within the tag.
 
 ```python
 tbody = soup.find('tbody', class_='lister-list')
 ```
+Within ```<tbody>```, the required information are in separate tags:
 
+* The movie name is in ```<a>``` under ```<td class = 'titleColumn'>```
+* The year of release is in ```<span class = 'secondaryInfo'>```
+* The rating is in ```<strong>``` under ```<td class = 'ratingColumn imdbRating'>```
 
+Since all of these are under ```<tr>```, we will scan through all the available ```<tr>``` under ```<tbody class = 'lister-list'>```.
+Finally, at every interation of the loop, the information is stored accordingly into the 'MovieList' table.
+
+```python
+for tr in tbody.find_all('tr'):
+
+    record = tr
+    movieName = record.find('td', class_='titleColumn').a.text
+    year = record.find('span', class_='secondaryInfo').text.strip('()')
+    rating = record.find('td', class_='ratingColumn imdbRating').strong.text
+
+    cur.execute("INSERT INTO MovieList (MovieName, Year, Rating) VALUES (?, ?, ?)", (movieName, year, rating))
+    conn.commit()
+```
+
+### Final Result
+
+The table will, after executing the program, will be displayed as shown below.
+
+<img src = "Database_Image.png height = "400">
